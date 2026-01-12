@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: 9DTact
+Version: 1.0
+Summary: Open source of 9DTact.
+Home-page: https://linchangyi1.github.io/9DTact/
+Author: Changyi Lin
+Author-email: changyil@andrew.cmu.edu
+License: BSD-3-Clause
+Requires-Dist: cv_bridge>=1.15.0
+Requires-Dist: message_filters>=1.15.0
+Requires-Dist: ml_collections>=0.1.1
+Requires-Dist: numpy>=1.21.0
+Requires-Dist: open3d>=0.12.0
+Requires-Dist: opencv_python>=4.5.0
+Requires-Dist: py3rosmsgs>=1.18.0
+Requires-Dist: PyYAML>=5.3.1
+Requires-Dist: rosnumpy>=0.0.5
+Requires-Dist: rospy>=1.15.0
+Requires-Dist: scipy>=1.7.0
+Requires-Dist: sensor_msgs>=1.13.0
+Requires-Dist: setuptools>=60.0.0
+Requires-Dist: torch>=1.12.0
+Requires-Dist: torchvision>=0.13.0

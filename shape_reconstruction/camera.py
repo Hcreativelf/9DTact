@@ -17,6 +17,8 @@ class Camera:
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, raw_img_width)
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, raw_img_height)
         self.cap.set(cv2.CAP_PROP_FPS, fps)
+        # add
+        self.cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
 
         calibration_root_dir = cfg['calibration_root_dir']
         self.calibration_sensor_dir = calibration_root_dir + '/sensor_' + str(sensor_id)

@@ -1,4 +1,4 @@
-sensor_id: 1
+sensor_id: 123
 calibration_root_dir: ../shape_reconstruction/calibration
 
 camera_setting:
@@ -11,15 +11,15 @@ camera_setting:
 camera_calibration:
   row_points: 7
   col_points: 9
-  grid_distance: 2.5
+  grid_distance: 3.0
   camera_calibration_dir: /camera_calibration
   image_format: png
   row_index_path: /row_index.npy
   col_index_path: /col_index.npy
   position_scale_path: /position_scale.npy
   crop_size:
-    - 345
-    - 460
+    - 315
+    - 420
 
 depth_calibration:
   depth_calibration_dir: /depth_calibration

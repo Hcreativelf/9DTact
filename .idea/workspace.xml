@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="41e52cca-116e-4c77-98a2-8862b8a7f686" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/test/test_camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/9DTact.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/col_index.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/position_scale.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/ref.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/ref_GRAY.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/row_index.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/sample.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/sample_GRAY.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/sample_contours.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/sample_drawing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/sample_drawing_new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/sample_drawing_new_crop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/sample_new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/camera_calibration/sample_new_crop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/depth_calibration/Pixel_to_Depth.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/depth_calibration/rectify_crop_ref.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/depth_calibration/rectify_crop_sample.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/depth_calibration/ref.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_1/depth_calibration/sample.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/col_index.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/position_scale.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/ref.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/ref_GRAY.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/row_index.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/sample.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/sample_GRAY.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/sample_contours.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/sample_drawing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/sample_drawing_new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/sample_drawing_new_crop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/sample_new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/camera_calibration/sample_new_crop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/depth_calibration/Pixel_to_Depth.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/depth_calibration/rectify_crop_ref.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/depth_calibration/rectify_crop_sample.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/depth_calibration/ref.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/calibration/sensor_2/depth_calibration/sample.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/shape_reconstruction/camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape_reconstruction/shape_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/shape_reconstruction/shape_config.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="36EoacJP7VcELhIRrmEa8NQAE6B" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/4-stuff/data/Python/9DTact-full/test&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\4-stuff\data\Python\9DTact-full\test" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.26830.99" />
+        <option value="bundled-python-sdk-164cda30dcd9-0af03a5fa574-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26830.99" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="41e52cca-116e-4c77-98a2-8862b8a7f686" name="更改" comment="" />
+      <created>1764581155626</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1764581155626</updated>
+      <workItem from="1764581156985" duration="586000" />
+      <workItem from="1764581975736" duration="1374000" />
+      <workItem from="1764595087409" duration="2234000" />
+      <workItem from="1764665632169" duration="8642000" />
+      <workItem from="1764690038777" duration="3693000" />
+      <workItem from="1764694461009" duration="410000" />
+      <workItem from="1764695112731" duration="2794000" />
+      <workItem from="1764698062841" duration="291000" />
+      <workItem from="1764698492464" duration="200000" />
+      <workItem from="1764749573228" duration="1903000" />
+      <workItem from="1764782694951" duration="161000" />
+      <workItem from="1764784767068" duration="11000" />
+      <workItem from="1765113970847" duration="10000" />
+      <workItem from="1766400852902" duration="622000" />
+      <workItem from="1767440036985" duration="46000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
