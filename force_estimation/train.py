@@ -18,7 +18,7 @@ from model import *
 import cv2
 
 # use_wandb = True
-use_wandb = False
+use_wandb = true
 
 wrench_range = [[-3, 3], [-3, 3], [-12, 0], [-0.2, 0.2], [-0.2, 0.2], [-0.05, 0.05]]
 min_wrench = np.array([.0, .0, .0, .0, .0, .0])
