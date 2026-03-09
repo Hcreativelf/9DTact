@@ -7,7 +7,7 @@ run = wandb.init(
     # Set the wandb entity where your project will be logged (generally your team name).
     entity="creativelf-sichuan-university",
     # Set the wandb project where this run will be logged.
-    project="my-awesome-project",
+    project="autodl-test",
     # Track hyperparameters and run metadata.
     config={
         "learning_rate": 0.02,
