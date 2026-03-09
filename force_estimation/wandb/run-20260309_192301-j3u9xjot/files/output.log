@@ -1,0 +1,40 @@
+Traceback (most recent call last):
+  File "train.py", line 380, in <module>
+    force_estimation = ForceEstimation(config)
+  File "train.py", line 169, in __init__
+    self.train()
+  File "train.py", line 208, in train
+    predict_forces = self.model(images)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torchvision/models/densenet.py", line 213, in forward
+    features = self.features(x)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/container.py", line 219, in forward
+    input = module(input)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torchvision/models/densenet.py", line 122, in forward
+    new_features = layer(features)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torchvision/models/densenet.py", line 90, in forward
+    new_features = self.conv2(self.relu2(self.norm2(bottleneck_output)))
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py", line 176, in forward
+    return F.batch_norm(
+  File "/root/miniconda3/envs/9dtact/lib/python3.8/site-packages/torch/nn/functional.py", line 2512, in batch_norm
+    return torch.batch_norm(
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 23.64 GiB of which 7.75 MiB is free. Process 42377 has 23.63 GiB memory in use. Of the allocated memory 23.00 GiB is allocated by PyTorch, and 234.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

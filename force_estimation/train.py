@@ -18,7 +18,7 @@ from model import *
 import cv2
 
 # use_wandb = True
-use_wandb = true
+use_wandb = True
 
 wrench_range = [[-3, 3], [-3, 3], [-12, 0], [-0.2, 0.2], [-0.2, 0.2], [-0.05, 0.05]]
 min_wrench = np.array([.0, .0, .0, .0, .0, .0])
@@ -71,6 +71,7 @@ class ForceEstimation:
         parser.add_argument("--weight_decay", default=None, type=float)
         parser.add_argument("--end_factor", default=0.4, type=float)
         parser.add_argument("--total_iters", default=20, type=int)
+        parser.add_argument("--num_workers", default=0, type=int, help="number of data loading workers")
         args = parser.parse_args()
 
         # parameters
@@ -103,7 +104,7 @@ class ForceEstimation:
         test_dataset = DTactDataset(mode='test', root_path=cfg['data_dir'], image_type=image_type,
                                     test_object=test_object, mixed_image=mixed_image)
         self.test_img_num = len(test_dataset)
-        self.test_dataLoader = DataLoader(test_dataset, batch_size=eval_batch, shuffle=False)
+        self.test_dataLoader = DataLoader(test_dataset, batch_size=eval_batch, shuffle=False, num_workers=args.num_workers)
 
         if train_mode:
             self.num_epoch = args.num_epoch if args.num_epoch is not None else cfg['num_epoch']
@@ -133,7 +134,7 @@ class ForceEstimation:
             train_dataset = DTactDataset(mode='train', root_path=cfg['data_dir'],
                                          image_type=image_type, test_object=test_object, mixed_image=mixed_image)
             self.train_img_num = len(train_dataset)
-            self.train_dataLoader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+            self.train_dataLoader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=args.num_workers)
 
             # optimizer
             if optimizer == 'SGD':

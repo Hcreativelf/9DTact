@@ -1,0 +1,57 @@
+{
+  "os": "Linux-5.15.0-94-generic-x86_64-with-glibc2.17",
+  "python": "CPython 3.8.20",
+  "startedAt": "2026-03-09T11:24:03.580072Z",
+  "args": [
+    "--model_name=Densenet",
+    "--model_layer=169",
+    "--optimizer=ADAM",
+    "--lrs=False",
+    "--image_type=RGB",
+    "--cuda_index=0",
+    "--train_mode=True",
+    "--test_object=False",
+    "--mixed_image=True",
+    "--pretrained=False",
+    "--batch_size=64",
+    "--num_epoch=200",
+    "--learning_rate=5.0e-4",
+    "--weight_decay=0.0",
+    "--num_workers=8"
+  ],
+  "program": "train.py",
+  "codePath": "force_estimation/train.py",
+  "codePathLocal": "train.py",
+  "git": {
+    "remote": "https://github.com/Hcreativelf/9DTact.git",
+    "commit": "2dabe36bbe325575ea825dcf7dba0f3e55d22469"
+  },
+  "email": "creativelf@outlook.com",
+  "root": "/root/autodl-tmp/9DTact/force_estimation",
+  "host": "autodl-container-4e0e468bcd-00b8bc54",
+  "executable": "/root/miniconda3/envs/9dtact/bin/python",
+  "cpu_count": 96,
+  "cpu_count_logical": 192,
+  "gpu": "NVIDIA GeForce RTX 4090 D",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "32212254720",
+      "used": "17070346240"
+    }
+  },
+  "memory": {
+    "total": "1081834651648"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "memoryTotal": "25757220864",
+      "cudaCores": 14592,
+      "architecture": "Ada",
+      "uuid": "GPU-915cf297-889b-ff8c-04f7-5ac0d2908d3f"
+    }
+  ],
+  "cudaVersion": "12.4",
+  "writerId": "9y0rjv3d1yj5dlcv2hnisan935xv7bcc"
+}
