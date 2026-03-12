@@ -71,6 +71,7 @@ class ForceEstimation:
         parser.add_argument("--weight_decay", default=None, type=float)
         parser.add_argument("--end_factor", default=0.4, type=float)
         parser.add_argument("--total_iters", default=20, type=int)
+        parser.add_argument("--num_workers", default=0, type=int, help="number of data loading workers")
         args = parser.parse_args()
 
         # parameters
@@ -103,7 +104,7 @@ class ForceEstimation:
         test_dataset = DTactDataset(mode='test', root_path=cfg['data_dir'], image_type=image_type,
                                     test_object=test_object, mixed_image=mixed_image)
         self.test_img_num = len(test_dataset)
-        self.test_dataLoader = DataLoader(test_dataset, batch_size=eval_batch, shuffle=False)
+        self.test_dataLoader = DataLoader(test_dataset, batch_size=eval_batch, shuffle=False, num_workers=args.num_workers)
 
         if train_mode:
             self.num_epoch = args.num_epoch if args.num_epoch is not None else cfg['num_epoch']
@@ -133,7 +134,7 @@ class ForceEstimation:
             train_dataset = DTactDataset(mode='train', root_path=cfg['data_dir'],
                                          image_type=image_type, test_object=test_object, mixed_image=mixed_image)
             self.train_img_num = len(train_dataset)
-            self.train_dataLoader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+            self.train_dataLoader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=args.num_workers)
 
             # optimizer
             if optimizer == 'SGD':
@@ -251,7 +252,25 @@ class ForceEstimation:
                            test_loss, np.around(force_test_error.detach().cpu().numpy(), decimals=2),
                            np.round(force_test_error_span.detach().cpu().numpy(), 3), time_dif / 60, improve) + "\n")
             if use_wandb:
-                self.run_log.log({"train_loss": train_loss, "test_loss": test_loss})
+                log_dict = {
+                    "train_loss": train_loss,
+                    "test_loss": test_loss,
+                    "lr": lr,
+                    "epoch": epoch + 1, 
+                    "train_error_x": force_train_error[0].item(),
+                    "train_error_y": force_train_error[1].item(),
+                    "train_error_z": force_train_error[2].item(),
+                    "train_error_tx": force_train_error[3].item(),
+                    "train_error_ty": force_train_error[4].item(),
+                    "train_error_tz": force_train_error[5].item(),
+                    "test_error_x": force_test_error[0].item(),
+                    "test_error_y": force_test_error[1].item(),
+                    "test_error_z": force_test_error[2].item(),
+                    "test_error_tx": force_test_error[3].item(),
+                    "test_error_ty": force_test_error[4].item(),
+                    "test_error_tz": force_test_error[5].item(),
+                }
+                self.run_log.log(log_dict)
             self.model.train()
         writer.close()
         if use_wandb:

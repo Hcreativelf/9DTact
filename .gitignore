@@ -8,3 +8,5 @@ Dataset/mixed_image
 Dataset/wrench
 
 test/wandb/
+
+requirements.txt
