@@ -31,29 +31,50 @@ wrench_span = max_wrench - min_wrench
 
 
 class DiffusionForceModel(nn.Module):
-    def __init__(self, layer=50, pretrained=True, feature_dim=512):
+    def __init__(self, model_name='Resnet', layer=50, pretrained=True, feature_dim=512):
         super(DiffusionForceModel, self).__init__()
         
         # 图像编码器 - 使用预训练的CNN作为条件编码器
-        if layer == 18:
-            self.encoder = models.resnet18(pretrained=pretrained)
-            print('use Resnet-18 as encoder')
-            encoder_dim = 512
-        elif layer == 34:
-            self.encoder = models.resnet34(pretrained=pretrained)
-            print('use Resnet-34 as encoder')
-            encoder_dim = 512
-        elif layer == 50:
-            self.encoder = models.resnet50(pretrained=pretrained)
-            print('use Resnet-50 as encoder')
-            encoder_dim = 2048
-        else:
-            self.encoder = models.resnet101(pretrained=pretrained)
-            print('use Resnet-101 as encoder')
-            encoder_dim = 2048
+        if model_name == 'Resnet':   # 注意：这里需要能获取到 model_name，实际应作为参数传入
+            # 原有 ResNet 代码...
+            if layer == 18:
+                self.encoder = models.resnet18(pretrained=pretrained)
+                encoder_dim = 512
+            elif layer == 34:
+                self.encoder = models.resnet34(pretrained=pretrained)
+                encoder_dim = 512
+            elif layer == 50:
+                self.encoder = models.resnet50(pretrained=pretrained)
+                encoder_dim = 2048
+            else:
+                self.encoder = models.resnet101(pretrained=pretrained)
+                encoder_dim = 2048
+            self.encoder = nn.Sequential(*list(self.encoder.children())[:-1])
         
-        # 移除最后的全连接层，保留特征提取部分
-        self.encoder = nn.Sequential(*list(self.encoder.children())[:-1])
+        elif model_name == 'Densenet':
+            if layer == 121:
+                self.encoder = models.densenet121(pretrained=pretrained)
+                encoder_dim = 1024
+            elif layer == 169:
+                self.encoder = models.densenet169(pretrained=pretrained)
+                encoder_dim = 1664
+            elif layer == 201:
+                self.encoder = models.densenet201(pretrained=pretrained)
+                encoder_dim = 1920
+            else:
+                # 默认使用 DenseNet169
+                self.encoder = models.densenet169(pretrained=pretrained)
+                encoder_dim = 1664
+            # DenseNet 的特征提取部分在 .features 中，不包含 avgpool 和分类器
+            self.encoder = self.encoder.features
+        
+       # 特征投影层（统一处理全局池化 + 线性投影）
+        self.feature_proj = nn.Sequential(
+            nn.AdaptiveAvgPool2d((1, 1)),   # 将任意尺寸的特征图池化为 1x1
+            nn.Flatten(),
+            nn.Linear(encoder_dim, 256),
+            nn.SiLU()
+        )
         
         # 时间步编码器
         self.time_embed = nn.Sequential(
@@ -74,12 +95,6 @@ class DiffusionForceModel(nn.Module):
             nn.Linear(128, 6)  # 输出: 预测的噪声
         )
         
-        # 特征投影层 (移除冗余的AdaptiveAvgPool2d)
-        self.feature_proj = nn.Sequential(
-            nn.Flatten(),
-            nn.Linear(encoder_dim, 256),
-            nn.SiLU()
-        )
     
     def forward(self, noisy_forces, t, images):
         """
@@ -172,7 +187,7 @@ class ForceEstimationDM:
 
         # model configuration
         self.device = torch.device(f"cuda:{cuda_index}" if torch.cuda.is_available() else "cpu")
-        self.model = DiffusionForceModel(layer=int(model_layer), pretrained=pretrained).to(self.device)
+        self.model = DiffusionForceModel(model_name=model_name, layer=int(model_layer), pretrained=pretrained).to(self.device)
         self.lossFunction = nn.MSELoss(reduction='sum')  # 扩散模型使用MSE损失，与原代码保持一致使用sum
 
         # 初始化力值范围参数
@@ -268,6 +283,10 @@ class ForceEstimationDM:
         self.betas = self.betas.to(self.device)
         self.alphas = 1.0 - self.betas
         self.alphas_cumprod = torch.cumprod(self.alphas, dim=0)
+
+        # 钳制避免浮点下溢
+        self.alphas_cumprod = torch.clamp(self.alphas_cumprod, max=1.0 - 1e-7)
+
         self.sqrt_alphas_cumprod = torch.sqrt(self.alphas_cumprod)
         self.sqrt_one_minus_alphas_cumprod = torch.sqrt(1.0 - self.alphas_cumprod)
         
@@ -315,18 +334,20 @@ class ForceEstimationDM:
             alpha_cumprod_t = self.alphas_cumprod[t].view(-1, 1)
             alpha_cumprod_prev_t = self.alphas_cumprod_prev[t].view(-1, 1)
             
+            # 添加 epsilon 防止除零
+            sqrt_one_minus_alpha_cumprod = torch.sqrt(1.0 - alpha_cumprod_t + 1e-8)
+            mean = (1.0 / torch.sqrt(alpha_t)) * (x - ((1.0 - alpha_t) / sqrt_one_minus_alpha_cumprod) * noise_pred)
+
+            # 对方差也做保护
+            variance = self.posterior_variance[t].view(-1, 1)
+            variance = torch.clamp(variance, min=1e-8)
+
             # DDPM采样公式
             # 因为t的所有元素相同，取第一个判断即可
             if t[0] > 0:
                 z = torch.randn_like(x)
             else:
                 z = torch.zeros_like(x)
-            
-            # 计算均值
-            mean = (1.0 / torch.sqrt(alpha_t)) * (x - ((1.0 - alpha_t) / torch.sqrt(1.0 - alpha_cumprod_t)) * noise_pred)
-            
-            # 计算方差
-            variance = self.posterior_variance[t].view(-1, 1)
             
             # 采样
             x_prev = mean + torch.sqrt(variance) * z
@@ -394,7 +415,9 @@ class ForceEstimationDM:
                     alpha_t = self.alphas[t].view(-1, 1)
                     alpha_cumprod_t = self.alphas_cumprod[t].view(-1, 1)
                     
-                    predict_forces = (1.0 / torch.sqrt(alpha_t)) * (noisy_forces - ((1.0 - alpha_t) / torch.sqrt(1.0 - alpha_cumprod_t)) * noise_pred)
+                    sqrt_alpha_cumprod = self.sqrt_alphas_cumprod[t].view(-1, 1)
+                    sqrt_one_minus_alpha_cumprod = self.sqrt_one_minus_alphas_cumprod[t].view(-1, 1)
+                    predict_forces = (noisy_forces - sqrt_one_minus_alpha_cumprod * noise_pred) / sqrt_alpha_cumprod
                     
                     # 限制范围
                     predict_forces[predict_forces < 0] = 0

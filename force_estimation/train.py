@@ -256,7 +256,6 @@ class ForceEstimation:
                     "train_loss": train_loss,
                     "test_loss": test_loss,
                     "lr": lr,
-                    "epoch": epoch + 1, 
                     "train_error_x": force_train_error[0].item(),
                     "train_error_y": force_train_error[1].item(),
                     "train_error_z": force_train_error[2].item(),

@@ -1,0 +1,78 @@
+# ========================================
+# Diffusion Force Estimation Config
+# ========================================
+
+# CNN backbone for condition encoding
+model_list:
+  - - Resnet
+    - 18
+  - - Densenet
+    - 169
+model_choice: 1
+image_type: RGB
+train_mode: True
+test_object: False
+mixed_image: True
+
+data_dir: ../Dataset
+save_dir: ../saved_models
+
+# Pre-trained weights for evaluation mode
+weights:
+  - - _05-14_17-36-54  # Resnet
+    - 87
+  - - _09-22_15-17-06  # Densenet
+    - 153
+eval_batch: 32
+
+cuda_index: 0
+batch_size: 64
+num_epoch: 200
+learning_rate: 5.0e-4
+
+regularization: False
+weight_decay: 0
+
+img_size:
+  - 345
+  - 460
+
+# ---- Diffusion-specific parameters(It has been configured to the default) ----
+num_timesteps: 1000
+beta_start: 1.0e-4
+beta_end: 0.02
+feature_dim: 256
+hidden_dim: 512
+num_mlp_layers: 6
+num_ensemble: 10
+
+
+# 参数名            类型	    默认值	            含义
+# --model_name      str	    "Densenet"	  CNN 主干网络类型：Resnet 或 Densenet
+# --model_layer	    int	    169	           主干网络的层数（例如 Resnet-50, Densenet-169）
+# --optimizer       str	    "ADAM"	      优化器类型（如 SGD、ADAM）
+# --lrs             bool	  True	          是否使用学习率调度器（LinearLR）
+# --image_type	    str	    "RGB"	        输入图像类型（如 RGB、Depth 等）
+# --cuda_index	    int	    0	           使用的 GPU 编号
+# --train_mode	    bool	  True	          是否为训练模式（True 训练，False 仅评估）
+# --test_object	    bool	  False	          是否对特定物体进行测试（物体泛化测试）
+# --mixed_image	    bool	  True	          是否使用混合图像（如多光照条件）
+# --pretrained	    bool	  True	          CNN 主干是否使用 ImageNet 预训练权重
+# --batch_size	    int	    64	           训练批大小
+# --num_epoch	      int	    200	           训练轮数 
+# --learning_rate	  float	  5e-4	        初始学习率
+# --weight_decay	  float	  0.0	        Adam 优化器的权重衰减系数
+# --end_factor	    float	  0.4	        学习率调度器的最终学习率缩放因子（start_factor=1.0, end_factor=0.4 表示最终学习率为初始的 0.4 倍）
+# --total_iters	 	  int	    20	           学习率从初始值衰减到 end_factor 所需的迭代步数（这里指 epoch 数？实际代码中每个 epoch 调用一次 scheduler，所以是 epoch 数）
+# --num_workers	 	  int	    4	           DataLoader 的子进程数量
+# --num_timesteps	  int	    1000	           扩散模型的总时间步数（T）
+# --beta_start	    float	  1e-4	        扩散噪声调度（beta）的起始值
+# --beta_end	      float	  0.02	        扩散噪声调度（beta）的结束值
+# --feature_dim	    int	    256	           CNN 提取的条件特征向量的维度（作为去噪 MLP 的条件输入）
+# --hidden_dim	    int	    512	           去噪 MLP 的隐藏层维度
+# --num_mlp_layers  int	    6	           去噪 MLP 中包含的残差块数量（网络深度）
+# --num_ensemble	  int	    10	           推理时对同一张图像采样的集成次数（多次预测取平均）
+# --use_ddim	      bool	  True	          推理时是否使用 DDIM（加速采样）
+# --ddim_steps	    int	    50	           如果 use_ddim=True，DDIM 采样的步数（远小于 num_timesteps，例如 50 vs 1000）
+# --resize_img	    bool	  False	          是否对输入图像进行 resize（原代码中未使用，但保留参数）
+# --eval_batch	    int	    32	           评估时的批大小（训练模式外单独设置）
