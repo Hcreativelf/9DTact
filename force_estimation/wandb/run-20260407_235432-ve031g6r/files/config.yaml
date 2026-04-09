@@ -1,0 +1,106 @@
+_wandb:
+    value:
+        cli_version: 0.24.2
+        e:
+            k8s7d4sfgnijf7oopv8m6dgg54fm0w3k:
+                args:
+                    - --model_name=Densenet
+                    - --model_layer=169
+                    - --optimizer=ADAM
+                    - --lrs=True
+                    - --image_type=RGB
+                    - --cuda_index=0
+                    - --train_mode=True
+                    - --test_object=False
+                    - --mixed_image=True
+                    - --pretrained=True
+                    - --batch_size=32
+                    - --num_epoch=200
+                    - --learning_rate=5e-4
+                    - --weight_decay=0.0
+                    - --num_timesteps=1000
+                    - --feature_dim=256
+                    - --hidden_dim=512
+                    - --num_mlp_layers=6
+                    - --num_ensemble=10
+                    - --use_ddim=True
+                    - --ddim_steps=50
+                    - --num_workers=4
+                codePath: force_estimation/train_diffusion.py
+                codePathLocal: train_diffusion.py
+                cpu_count: 96
+                cpu_count_logical: 192
+                cudaVersion: "12.4"
+                disk:
+                    /:
+                        total: "32212254720"
+                        used: "14184931328"
+                email: creativelf@outlook.com
+                executable: /root/miniconda3/envs/9dtact/bin/python
+                git:
+                    commit: 96a01a8f5e828a7d2dd22ab7c3c2a2d0fc7ce265
+                    remote: https://github.com/Hcreativelf/9DTact.git
+                gpu: NVIDIA GeForce RTX 4090 D
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 14592
+                      memoryTotal: "25757220864"
+                      name: NVIDIA GeForce RTX 4090 D
+                      uuid: GPU-45cc0502-6a22-5cbe-9406-7eca6a2f7a6e
+                host: autodl-container-4e0e468bcd-00b8bc54
+                memory:
+                    total: "1081834651648"
+                os: Linux-5.15.0-94-generic-x86_64-with-glibc2.17
+                program: train_diffusion.py
+                python: CPython 3.8.20
+                root: /root/autodl-tmp/9DTact/force_estimation
+                startedAt: "2026-04-07T15:54:32.648506Z"
+                writerId: k8s7d4sfgnijf7oopv8m6dgg54fm0w3k
+        m: []
+        python_version: 3.8.20
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 2
+                - 13
+                - 16
+            "4": 3.8.20
+            "5": 0.24.2
+            "12": 0.24.2
+            "13": linux-x86_64
+batch_size:
+    value: 32
+feature_dim:
+    value: 256
+hidden_dim:
+    value: 512
+image_type:
+    value: RGB
+learning_rate:
+    value: 0.0005
+mixed_image:
+    value: true
+model_type:
+    value: Diffusion-Densenet-169
+num_ensemble:
+    value: 10
+num_epoch:
+    value: 200
+num_mlp_layers:
+    value: 6
+num_timesteps:
+    value: 1000
+optimizer:
+    value: ADAM
+pretrained:
+    value: true
+test_object:
+    value: false
+weight_decay:
+    value: 0

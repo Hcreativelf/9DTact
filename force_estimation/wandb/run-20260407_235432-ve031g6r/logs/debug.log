@@ -1,0 +1,24 @@
+2026-04-07 23:54:32,650 INFO    MainThread:1507 [wandb_setup.py:_flush():81] Current SDK version is 0.24.2
+2026-04-07 23:54:32,651 INFO    MainThread:1507 [wandb_setup.py:_flush():81] Configure stats pid to 1507
+2026-04-07 23:54:32,651 INFO    MainThread:1507 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-04-07 23:54:32,651 INFO    MainThread:1507 [wandb_init.py:setup_run_log_directory():717] Logging user logs to /root/autodl-tmp/9DTact/force_estimation/wandb/run-20260407_235432-ve031g6r/logs/debug.log
+2026-04-07 23:54:32,651 INFO    MainThread:1507 [wandb_init.py:setup_run_log_directory():718] Logging internal logs to /root/autodl-tmp/9DTact/force_estimation/wandb/run-20260407_235432-ve031g6r/logs/debug-internal.log
+2026-04-07 23:54:32,651 INFO    MainThread:1507 [wandb_init.py:init():844] calling init triggers
+2026-04-07 23:54:32,651 INFO    MainThread:1507 [wandb_init.py:init():849] wandb.init called with sweep_config: {}
+config: {'model_type': 'Diffusion-Densenet-169', 'image_type': 'RGB', 'optimizer': 'ADAM', 'test_object': False, 'mixed_image': True, 'pretrained': True, 'batch_size': 32, 'learning_rate': 0.0005, 'num_epoch': 200, 'weight_decay': 0.0, 'num_timesteps': 1000, 'feature_dim': 256, 'hidden_dim': 512, 'num_mlp_layers': 6, 'num_ensemble': 10, '_wandb': {}}
+2026-04-07 23:54:32,651 INFO    MainThread:1507 [wandb_init.py:init():892] starting backend
+2026-04-07 23:54:32,922 INFO    MainThread:1507 [wandb_init.py:init():895] sending inform_init request
+2026-04-07 23:54:32,977 INFO    MainThread:1507 [wandb_init.py:init():903] backend started and connected
+2026-04-07 23:54:32,980 INFO    MainThread:1507 [wandb_init.py:init():973] updated telemetry
+2026-04-07 23:54:33,022 INFO    MainThread:1507 [wandb_init.py:init():997] communicating run to backend with 90.0 second timeout
+2026-04-07 23:54:35,857 INFO    MainThread:1507 [wandb_init.py:init():1042] starting run threads in backend
+2026-04-07 23:54:36,070 INFO    MainThread:1507 [wandb_run.py:_console_start():2529] atexit reg
+2026-04-07 23:54:36,071 INFO    MainThread:1507 [wandb_run.py:_redirect():2377] redirect: wrap_raw
+2026-04-07 23:54:36,071 INFO    MainThread:1507 [wandb_run.py:_redirect():2446] Wrapping output streams.
+2026-04-07 23:54:36,071 INFO    MainThread:1507 [wandb_run.py:_redirect():2469] Redirects installed.
+2026-04-07 23:54:36,077 INFO    MainThread:1507 [wandb_init.py:init():1082] run started, returning control to user process
+2026-04-09 13:35:16,818 INFO    MainThread:1507 [wandb_run.py:_finish():2295] finishing run creativelf-sichuan-university/Diffusion_Force_Estimation/ve031g6r
+2026-04-09 13:35:16,819 INFO    MainThread:1507 [wandb_run.py:_atexit_cleanup():2494] got exitcode: 0
+2026-04-09 13:35:16,820 INFO    MainThread:1507 [wandb_run.py:_restore():2476] restore
+2026-04-09 13:35:16,820 INFO    MainThread:1507 [wandb_run.py:_restore():2482] restore done
+2026-04-09 13:35:20,281 INFO    MainThread:1507 [wandb_run.py:_footer_sync_info():3871] logging synced files

@@ -1,0 +1,9 @@
+model: Diffusion-Densenet-169
+batch_size: 32
+epoch: 200
+learning_rate: 0.0005
+weight_decay: 0.0
+num_timesteps: 1000
+feature_dim: 256
+hidden_dim: 512
+num_mlp_layers: 6
