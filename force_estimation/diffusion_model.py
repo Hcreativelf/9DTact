@@ -96,8 +96,8 @@ class SinusoidalPositionEmbedding(nn.Module):
         """
         device = t.device
         half_dim = self.dim // 2
-        emb_scale = math.log(10000) / (half_dim - 1)
-        emb = torch.exp(torch.arange(half_dim, device=device, dtype=torch.float32) * -emb_scale)
+        emb_scale = math.log(10000) / (half_dim - 1)    # 计算正弦位置编码中频率的衰减尺度
+        emb = torch.exp(torch.arange(half_dim, device=device, dtype=torch.float32) * -emb_scale)    # 计算频率向量
         emb = t.float().unsqueeze(1) * emb.unsqueeze(0)  # (B, half_dim)
         emb = torch.cat([torch.sin(emb), torch.cos(emb)], dim=-1)  # (B, dim)
         return emb
@@ -243,7 +243,7 @@ class GaussianDiffusion:
             noise:   (B, 6) the noise that was added
         """
         if noise is None:
-            noise = torch.randn_like(x_start)
+            noise = torch.randn_like(x_start)   # ϵ
 
         sqrt_alpha_bar = self.sqrt_alphas_cumprod[t].unsqueeze(-1)       # (B, 1)
         sqrt_one_minus = self.sqrt_one_minus_alphas_cumprod[t].unsqueeze(-1)  # (B, 1)
